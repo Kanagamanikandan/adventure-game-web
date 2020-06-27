@@ -1,0 +1,19 @@
+<button mat-flat-button color="primary" [routerLink]="['/']" mat-button >Back to List</button>
+<h1>Adventure: <span *ngIf="tree">{{tree.statement}}</span></h1>
+<button *ngIf="endOfGame" mat-flat-button color="primary" (click)="playAgain()">Play Again</button>
+<hr />
+<ng-container *ngIf="currentDecision">
+  <strong>{{ currentDecision.statement }}</strong>
+  <br />
+  <br />
+  <div *ngIf="currentDecision.positive">
+    <button mat-flat-button color="primary" (click)="handleDecision(true)">Yes</button>
+    &nbsp;
+    <button mat-flat-button color="warn" (click)="handleDecision(false)">No</button>
+  </div>
+</ng-container>
+
+
+<div *ngIf="treeForChart && endOfGame">
+  <p-organizationChart [value]="treeForChart"></p-organizationChart>
+</div>
